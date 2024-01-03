@@ -2,29 +2,25 @@ body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
+    box-sizing: border-box;
     background-color: #f5f5f5;
 }
 
 main {
+    max-width: 800px;
+    margin: 20px auto;
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
     border-radius: 8px;
-    overflow: hidden;
-    padding: 24px;
 }
 
-h1 {
-    text-align: center;
+h1, h2 {
     color: #333;
-    margin: 20px 0;
 }
 
 section {
-    padding: 20px;
+    margin-top: 20px;
 }
 
 .mainBoard {
@@ -32,23 +28,21 @@ section {
     flex-direction: column;
 }
 
-.upper {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
+.upper, .lower {
+    margin-bottom: 10px;
 }
 
 .input-label {
     display: block;
     margin-bottom: 5px;
-    color: #666;
+    color: #555;
 }
 
 .input-field {
     width: 100%;
     padding: 8px;
     margin-bottom: 10px;
-    border: 1px solid #ddd;
+    border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
 }
@@ -56,36 +50,33 @@ section {
 .finalPrice {
     background-color: #4caf50;
     color: #fff;
-    padding: 10px 20px;
+    padding: 10px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 16px;
 }
 
-.finalPrice:hover {
-    background-color: #45a049;
+#historialDescuentosPreciosFinales {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
-.lower {
-    text-align: center;
+#historialDescuentosPreciosFinales li {
+    margin-bottom: 5px;
+    color: #333;
 }
 
-#resultado {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ddd;
+button {
+    cursor: pointer;
+    background-color: #2196F3;
+    color: #fff;
+    padding: 10px;
+    border: none;
     border-radius: 4px;
-    box-sizing: border-box;
-    margin-top: 10px;
 }
 
-@media only screen and (max-width: 600px) {
-    section {
-        padding: 10px;
-    }
-
-    .upper {
-        flex-direction: column;
-    }
+p {
+    margin-top: 10px;
+    color: #333;
 }

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora con Historial</title>
+</head>
+<body>
+
+  <h1>Calculadora</h1>
+  
+  <input type="text" id="resultado" readonly>
+  <br>
+  <button onclick="agregarNumero('1')">1</button>
+  <button onclick="agregarNumero('2')">2</button>
+  <button onclick="agregarNumero('3')">3</button>
+  <button onclick="operacion('+')">+</button>
+  <br>
+  <button onclick="agregarNumero('4')">4</button>
+  <button onclick="agregarNumero('5')">5</button>
+  <button onclick="agregarNumero('6')">6</button>
+  <button onclick="operacion('-')">-</button>
+  <br>
+  <button onclick="agregarNumero('7')">7</button>
+  <button onclick="agregarNumero('8')">8</button>
+  <button onclick="agregarNumero('9')">9</button>
+  <button onclick="operacion('*')">*</button>
+  <br>
+  <button onclick="agregarNumero('0')">0</button>
+  <button onclick="limpiar()">C</button>
+  <button onclick="calcular()">=</button>
+  <button onclick="operacion('/')">/</button>
+  
+  <h2>Historial de Resultados</h2>
+  <ul id="historial"></ul>
+
+  <button onclick="sumarResultados()">Sumar Resultados</button>
+  <p id="resultadoSuma"></p>
+
+  <script>
+    let operacionActual = '';
+    let historial = [];
+
+    function agregarNumero(numero) {
+      operacionActual += numero;
+      actualizarResultado();
+    }
+
+    function operacion(op) {
+      operacionActual += ' ' + op + ' ';
+      actualizarResultado();
+    }
+
+    function limpiar() {
+      operacionActual = '';
+      actualizarResultado();
+    }
+
+    function calcular() {
+      try {
+        const resultado = eval(operacionActual);
+        historial.push(operacionActual + ' = ' + resultado);
+        actualizarHistorial();
+        limpiar();
+      } catch (error) {
+        alert('Error en la expresión');
+      }
+    }
+
+    function actualizarResultado() {
+      document.getElementById('resultado').value = operacionActual;
+    }
+
+    function actualizarHistorial() {
+      const historialList = document.getElementById('historial');
+      historialList.innerHTML = '';
+      historial.forEach((item) => {
+        const listItem = document.createElement('li');
+        listItem.textContent = item;
+        historialList.appendChild(listItem);
+      });
+    }
+
+    function sumarResultados() {
+      const resultadosNumericos = historial.map((item) => {
+        const resultado = item.split('=')[1].trim();
+        return parseFloat(resultado);
+      });
+
+      const suma = resultadosNumericos.reduce((total, num) => total + num, 0);
+      document.getElementById('resultadoSuma').textContent = 'Suma de resultados: ' + suma;
+    }
+  </script>
+
+</body>
+</html>
