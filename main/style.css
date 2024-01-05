@@ -28,6 +28,12 @@ section {
     flex-direction: column;
 }
 
+div.lower {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .upper, .lower {
     margin-bottom: 10px;
 }
@@ -60,6 +66,17 @@ section {
     list-style: none;
     padding: 0;
     margin: 0;
+}
+
+.subtitle {
+    text-align: center;
+}
+
+#historial {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;   
 }
 
 #historialDescuentosPreciosFinales li {
